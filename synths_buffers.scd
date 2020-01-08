@@ -21,18 +21,23 @@ s.sync;
 	Out.ar(out, amp*(snd1+snd2)*env);
 }).store;
 	s.sync;
-("/Users/narcodeb/Desktop/ /Panda Zooicide/ADAT 2018/panda_synths_ADAT_2017.scd").load;
+	SynthDef(\act, {|out=0, rt=1, at=0.01, amp=1, rate=1, buf, cut=1600|
+var snd, fx;
+	snd=PlayBuf.ar(2, buf, rate)*EnvGen.kr(Env.perc(attackTime: at, releaseTime:rt), doneAction: 2);
+	fx = LPF.ar(snd, cut);
+	Out.ar(out, fx*amp);
+}).store;
 s.sync;
 (// basic
 ~buffers = ();
-~buffers['bd'] = Buffer.read(s, "/Users/narcodeb/Development/Repos/codeklavier-supercollider/ck_ar/soundbanks/808bd/3.wav");
-~buffers['hh'] = Buffer.read(s, "/Users/narcodeb/Development/Repos/codeklavier-supercollider/ck_ar/soundbanks/808hh/3.wav");
-~buffers['sn'] = Buffer.read(s, "/Users/narcodeb/Development/Repos/codeklavier-supercollider/ck_ar/soundbanks/808sd/3.wav");
+~path_samples = thisProcess.nowExecutingPath.dirname ++ "/samples/";
+		~buffers['bd'] = Buffer.read(s, ~path_samples ++ "808bd.wav");
+~buffers['hh'] = Buffer.read(s, ~path_samples ++ "808hh.wav");
+~buffers['sn'] = Buffer.read(s, ~path_samples ++ "808sd.wav");
 );
 s.sync;
 (//// a.g.
 ~buffers['trio'] = (); ~buffers['trio_voz'] = (); ~buffers['rabinal'] = ();
-~dir = "/Users/narcodeb/Desktop/ /Narcode/A.G./";
 8.do{|i|
 	~buffers['trio'][i] = Buffer.read(s, ~dir ++ "trio_" ++ (i+1).asString ++ ".wav");
 };
