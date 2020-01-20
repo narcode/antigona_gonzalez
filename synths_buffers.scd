@@ -1,4 +1,6 @@
 /// synths and buffers
+s.waitForBoot{
+	MIDIIn.connectAll;
 {
 SynthDef(\harmNarcode, {|chord, out=0, at=8, rl=3, rate=1, pos=0, amp=1, buf, chordamp=1, disamp=(1/8)|
 	var env = EnvGen.kr(Env.perc(at, rl), doneAction:2);
@@ -39,17 +41,17 @@ s.sync;
 (//// a.g.
 ~buffers['trio'] = (); ~buffers['trio_voz'] = (); ~buffers['rabinal'] = ();
 8.do{|i|
-	~buffers['trio'][i] = Buffer.read(s, ~dir ++ "trio_" ++ (i+1).asString ++ ".wav");
+	~buffers['trio'][i] = Buffer.read(s, ~path_samples ++ "trio_" ++ (i+1).asString ++ ".wav");
 };
-5.do{|i|
-	~buffers['trio_voz'][i] = Buffer.read(s, ~dir ++ "trio_voz_" ++ (i+1).asString ++ ".wav");
+4.do{|i|
+	~buffers['trio_voz'][i] = Buffer.read(s, ~path_samples ++ "trio_voz_" ++ (i+1).asString ++ ".wav");
 };
-37.do{|i|
-	~buffers['rabinal'][i] = Buffer.read(s, ~dir ++ "/rabinal/" ++ (i+1).asString ++ ".wav");
+36.do{|i|
+	~buffers['rabinal'][i] = Buffer.read(s, ~path_samples ++ "/rabinal/" ++ (i+1).asString ++ ".wav");
 }
 );
 	s.sync;
-	"A.G. => all buffers anf synths loaded".postln;
+	"A.G. => all buffers and synths loaded".postln;
 	s.sync;
 	(
 m = {arg item, itemarg, debug, one=0, two=0, three=0, four=0;
@@ -113,10 +115,10 @@ r = Routine{
 };
 );
 	s.sync;
-	~maxsubdiv = 12;
+~maxsubdiv = 12;
 ~minsubdiv = 12;
 ~funcs = ();
 	s.sync;
-	"A.G. => PZ Beat machine loaded".unixCmd;
+	"A.G. => PZ Beat machine loaded".postln;
 }.fork;
-
+};

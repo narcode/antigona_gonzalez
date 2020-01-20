@@ -1,7 +1,3 @@
-/////////// Antígona González
-///////
-~path = thisProcess.nowExecutingPath.dirname ++ "/";
-(~path++"synths_buffers.scd").load;
 ///////
 //////// La llorona
 
