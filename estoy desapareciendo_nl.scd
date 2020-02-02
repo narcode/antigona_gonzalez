@@ -32,6 +32,18 @@ Ndef(\rev, {GVerb.ar(In.ar(60,2), 119, 2)*1}).play(6,2).fadeTime_(4);
 ~a4 = ["d3".namecps,"e3".namecps, "a3".namecps, "B3".namecps];
 ~a9 = ["e3".namecps,"g3".namecps, "B3".namecps,"c#4".namecps];
 ~fer = ["g2".namecps,"g3".namecps, "d3".namecps,"b3".namecps];
+
+~desA = ["a1".namecps,"d3".namecps, "d3".namecps,"f3".namecps];
+~desG = ["g1".namecps,"c3".namecps, "e3".namecps,"g3".namecps];
+~desC = ["c1".namecps,"c3".namecps, "e3".namecps,"g3".namecps];
+~desB = ["b1".namecps,"e3".namecps, "e3".namecps,"g3".namecps];
+~desF = ["a1".namecps,"f3".namecps, "e3".namecps,"f3".namecps];
+~desNunca = ["a1".namecps,"f3".namecps, "e3".namecps,"f3".namecps];
+~desLo = ["f1".namecps,"f3".namecps, "a3".namecps,"c3".namecps];
+~desAqui = ["f1".namecps,"f3".namecps, "a3".namecps,"b3".namecps];
+~desD = ["d3".namecps,"f3".namecps];
+~desC2 = ["c3".namecps,"g3".namecps];
+~desFin = ["c3".namecps,"f3".namecps];
 );
 // play:
 (
@@ -107,7 +119,7 @@ h.(~dm7, "a1");//53
 h.(~em9, "g1");
 h.("g1");
 h.(~a9, "a1");
-h.(~dm9, "d1");
+h.(~dm9, "d1"); // 58 (nos..)
 h.("d1");
 h.(~dm9, "d1");
 h.("d1");
@@ -130,7 +142,7 @@ h.(~dm7, "a1");
 h.(~cMaj9, "c2");
 h.("d1");
 h.(~d7, "a1");
-h.(~g3, "g1", 16);
+h.(~g3, "g1", 8);
 
 
 ///// REZO PARA TU CUERPO
