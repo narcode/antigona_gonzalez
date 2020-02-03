@@ -1,5 +1,6 @@
 /// synths and buffers
 s.waitForBoot{
+	t = TempoClock.default;
 	MIDIIn.connectAll;
 {
 SynthDef(\harmNarcode, {|chord, out=0, at=8, rl=3, rate=1, pos=0, amp=1, buf, chordamp=1, disamp=(1/8)|
