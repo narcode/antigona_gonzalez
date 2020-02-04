@@ -6,7 +6,7 @@ w.front;
 ~sec.string_("Llorona").align_(\center).font_(Font.monospace(30));
 ~name = "Llorona";
 ~vol = Volume(s, 0, 2, -90, 8, true);
-~vol.gui.window.alwaysOnTop_(true);
+~vol.gui;
 ~vol.volume = 0;
 ~funcs = ();
 /////
@@ -27,19 +27,19 @@ MIDIdef.cc(\ag, {|val, num, chan|
 	// secciones por fader:
 
 	// llorona: 0,0 (default)
-	if (num == 1) {
+	if (num == 0) {
 		~name = "Llorona";
 		Ndef.all.do{|n| n.stop(2);};~funcs = ();
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 2) {
+	if (num == 1) {
 		~name = "Rezo";
 		Ndef.all.do{|n| n.stop(2);};~funcs = ();
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 3) {
+	if (num == 2) {
 		~name = "7 círculos";
 		Ndef.all.do{|n| n.stop(2);};
 		t.tempo_(74/60);
@@ -63,7 +63,7 @@ r = Routine{
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 4) {
+	if (num == 3) {
 		~name = "Estoy desapareciendo";
 		Ndef.all.do{|n| n.stop(2);};
 		~funcs = ();
@@ -86,13 +86,13 @@ h = {arg chord=nil, bass=nil, rel=2.5;
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 8) {
+	if (num == 7) {
 		{~vol.volume_(val.linlin(0, 127, -90, 8))}.defer;
 	};
 
 // buttons:
 	8.do{|i|
-		if (num==(10+i)) {
+		if (num==(32+i)) {
 		 if (val > 1) {
 			 switch(~name,
 

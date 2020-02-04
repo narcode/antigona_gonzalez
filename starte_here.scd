@@ -1,18 +1,23 @@
-/////////// Antígona González
+/////////// Antígona González"/Users/McQuack/Downloads/antigona_gonzalez-master/midi.scd"
 ////////////
 /////// fina 2020
 //////////
 
-
 //// INSTRUCCIONES \\\\
 
-// 1. poner cursor en linea 10 y evaluar con shift+enter
+// 0. Evaluar las siguientes lineas, línea por línea:
+o = Server.local.options;
+o.memSize = 4096*10;
+s.reboot;
+s.meter;
+
+// 1. poner cursor en linea 15 y evaluar con shift+enter
 ~path = thisProcess.nowExecutingPath.dirname ++ "/";
 
-// 2. poner cursor en linea 12 y evaluar con shift+enter
+// 2. poner cursor en linea 18 y evaluar con shift+enter
 (~path++"synths_buffers_mx.scd").load;
 
-// 3. poner cursor en linea 16 y evaluar con shift+enter
+// 3. poner cursor en linea 21 y evaluar con shift+enter
 (~path++"midi.scd").load;
 
 
@@ -97,4 +102,3 @@ h.(~cMaj9, "c2");
 h.("d1");
 h.(~d7, "a1");
 h.(~g3, "g1", 16);
-
