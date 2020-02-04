@@ -1,4 +1,4 @@
-/////////// Antígona González"/Users/McQuack/Downloads/antigona_gonzalez-master/midi.scd"
+/////////// Antígona González
 ////////////
 /////// fina 2020
 //////////
