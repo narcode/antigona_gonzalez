@@ -30,16 +30,30 @@ MIDIdef.cc(\ag, {|val, num, chan|
 	if (num == 0) {
 		~name = "Llorona";
 		Ndef.all.do{|n| n.stop(2);};~funcs = ();
+		Ndef(\rev, {CombN.ar(In.ar(80,2), 0.2, 0.125, 9)*0.15}).play(0,2).fadeTime_(4);
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 1) {
-		~name = "Rezo";
+		if (num == 1) {
+		~name = "Aquí";
+		t.tempo_(70/60);
+		r.stop;
 		Ndef.all.do{|n| n.stop(2);};~funcs = ();
+		~funcs['fer'] = { m.(~bd, nil, true, 1, 1, 1, 1).play };
+		~bd = { Synth(\sampleNarcode, [\buf, ~buffers['bd'], \rel, 1, \out, 8])};
 		{~sec.string_(~name)}.defer;
 	};
 
 	if (num == 2) {
+		~name = "Rezo";
+		Ndef.all.do{|n| n.stop(2);};~funcs = ();
+ 	g = Group.new(s, 'addToHead');
+		Ndef(\rev, {GVerb.ar(In.ar(60,2), 119, 6)*1}).play(0,2).fadeTime_(4);
+		Ndef(\rzo).fadeTime_(3);Ndef(\rzo2).fadeTime_(1);
+		{~sec.string_(~name)}.defer;
+	};
+
+	if (num == 3) {
 		~name = "7 círculos";
 		Ndef.all.do{|n| n.stop(2);};
 		t.tempo_(74/60);
@@ -63,7 +77,7 @@ r = Routine{
 		{~sec.string_(~name)}.defer;
 	};
 
-	if (num == 3) {
+	if (num == 4) {
 		~name = "Estoy desapareciendo";
 		Ndef.all.do{|n| n.stop(2);};
 		~funcs = ();
@@ -97,7 +111,6 @@ h = {arg chord=nil, bass=nil, rel=2.5;
 			 switch(~name,
 
 					"Llorona", {(~name ++ " but "++i.asString).postln;
-					Ndef(\rev, {CombN.ar(In.ar(80,2), 0.2, 0.125, 9)*0.15}).play(0,2).fadeTime_(4);
 						switch(i,
 							0, {Ndef(\am, {GVerb.ar(SinOsc.ar(["a1".namecps, "a0".namecps])*EnvGen.kr(Env.perc(1, 1)), 78, 99)*0.2}).play(0,2);},
 							1, {Ndef(\am0, {GVerb.ar(SinOsc.ar(["a3".namecps, "g2".namecps])*EnvGen.kr(Env.perc(0.01, 0.7)), 78, 99)*0.2}).play(0,2);},
@@ -110,10 +123,25 @@ h = {arg chord=nil, bass=nil, rel=2.5;
 						);
 					},
 
+					"Aquí", {(~name ++ " but "++i.asString).postln;
+						switch(i,
+							0, {r.stop;
+										(
+r = Routine{
+	inf.do{
+		s.bind{
+			// audio
+			~funcs.do{|f| f.(); };
+		};
+		4.wait;
+	}
+}.play;
+);
+							}
+						);
+					},
+
 				"Rezo", {(~name ++ " but "++i.asString).postln;
-					g = Group.new(s, 'addToHead');
-					Ndef(\rev, {GVerb.ar(In.ar(60,2), 119, 6)*1}).play(0,2).fadeTime_(4);
-					Ndef(\rzo).fadeTime_(3);Ndef(\rzo2).fadeTime_(1);
 						switch(i,
 							0, {Ndef(\rzo, { ((SinOsc.ar(["f#1".namecps, "f#1".namecps*2], 0, [1, 0.8])*0.1) + (BrownNoise.ar(LFNoise0.kr(7).range(0.01, 1))*1*LFNoise0.kr(1/3).range(0, 0.1)*EnvGen.kr(Env.perc(0.01, 3))) );
 							}).play(60, group: g); "f#".postln;},

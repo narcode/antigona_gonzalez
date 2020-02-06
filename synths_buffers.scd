@@ -9,8 +9,8 @@ SynthDef(\harmNarcode, {|chord, out=0, at=8, rl=3, rate=1, pos=0, amp=1, buf, ch
 	Out.ar(out, snd*amp);
 }).store;
 s.sync;
-	SynthDef(\sampleNarcode, {|out=0, rl=0.1, rate=1, pos=0, amp=1, buf|
-	var env = EnvGen.kr(Env.perc(0.01, rl), doneAction:2);
+	SynthDef(\sampleNarcode, {|out=0, at=0.01, rl=0.1, rate=1, pos=0, amp=1, buf|
+	var env = EnvGen.kr(Env.perc(at, rl), doneAction:2);
 	var snd;
 	snd = PlayBuf.ar(1, buf, BufRateScale.kr(buf)*rate, 1, BufFrames.kr(buf)*pos)*env;
 	Out.ar(out, snd*amp);

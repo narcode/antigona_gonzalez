@@ -1,10 +1,10 @@
 //// los 7 cículos
 t.tempo_(74/60);
-r.isPlaying;
+r.isPlaying;r.stop
 ( // los 7 círculos // cresc.
 b = { Synth(\sampleNarcode, [\buf, ~buffers['rabinal'][2], \rl, 1, \rate, 1, \pos, 0, \amp, 9, \out, 8])};
 a = { Synth(\sampleNarcode, [\buf, ~buffers['rabinal'][4], \rl, 2, \amp, 5, \rate, 1, \pos, 0.rrand(0.5), \out, 10])};
-c = { Synth(\sampleNarcode, [\buf, ~buffers['trio'][2], \rl, 1, \rate, 1, \pos, 0, \amp, 2, \out, 7])};
+c = { Synth(\sampleNarcode, [\buf, ~buffers['trio'][2], \rl, 1, \rate, 1, \pos, 0, \amp, 0.1, \out, 7])};
 );
 Ndef(\rzo2).stop(9);
 ~funcs = ();
