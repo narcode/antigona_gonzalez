@@ -40,7 +40,7 @@ MIDIdef.cc(\ag, {|val, num, chan|
 		r.stop;
 		Ndef.all.do{|n| n.stop(2);};~funcs = ();
 		~funcs['fer'] = { m.(~bd, nil, true, 1, 1, 1, 1).play };
-		~bd = { Synth(\sampleNarcode, [\buf, ~buffers['bd'], \rel, 1, \out, 8])};
+		~bd = { Synth(\sampleNarcode, [\buf, ~buffers['bd'], \rel, 1, \out, 0])};
 		{~sec.string_(~name)}.defer;
 	};
 
